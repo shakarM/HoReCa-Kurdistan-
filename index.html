@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HoReCa Kurdistan</title>
+<link rel="icon" href="brand/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F1EB;
+  --tile:#EBE7DF;
+  --ink:#21160F;
+  --ink-2:#4D433B;
+  --mute:#8D8379;
+  --line:#DCD5CA;
+  --line-2:#CAC1B4;
+  --peach:#FBE1D0;
+  --peach-2:#F7EBE1;
+  --teal:#86C7C6;
+  --brown:#5E2A0D;
+  --brown-2:#8A6048;
+  --font:"IBM Plex Sans","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --ar:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif;
+  --pad:clamp(20px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--ar);font-weight:400;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,input,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.ltr{direction:ltr;unicode-bidi:isolate;font-family:var(--font)}
+.num{font-family:var(--font);font-feature-settings:"tnum" 1;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.wrap{padding-inline:var(--pad);max-width:1480px;margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:1.5px solid currentColor;outline-offset:3px}
+svg.i{width:17px;height:17px;flex:none}
+
+/* ——— branded landing ——— */
+.landing{background:var(--peach);color:var(--brown)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;border-bottom:1px solid rgba(94,42,13,.16)}
+.logo{display:flex;align-items:center}
+.logo img{height:24px;width:auto}
+.top nav{display:flex;align-items:center;gap:26px;font-size:14px}
+.top nav a{color:var(--brown-2);transition:color .2s}
+.top nav a:hover{color:var(--brown)}
+.lang{display:inline-flex;border:1px solid rgba(94,42,13,.28);border-radius:999px;padding:3px}
+.lang button{height:28px;padding-inline:12px;border-radius:999px;font-size:13px;color:var(--brown-2);transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--brown);color:var(--peach)}
+.listbtn{display:inline-flex;align-items:center;gap:8px;height:36px;padding-inline:14px;border:1px solid rgba(94,42,13,.28);border-radius:999px;font-size:13.5px;color:var(--brown);transition:border-color .2s}
+.listbtn:hover{border-color:var(--brown)}
+.listbtn .c{min-width:20px;height:20px;border-radius:999px;background:var(--brown);color:var(--peach);font-size:11px;display:inline-grid;place-items:center;padding-inline:5px}
+.listbtn .c[data-n="0"]{background:transparent;color:var(--brown-2);border:1px solid rgba(94,42,13,.28)}
+@media (max-width:900px){.top nav a{display:none}.top nav{gap:10px}}
+@media (max-width:480px){.landing .eyebrow{letter-spacing:.14em;font-size:10px}.logo img{height:17px}.listbtn .lbl{display:none}.listbtn{padding-inline:10px}}
+
+.hero{display:grid;grid-template-columns:1fr 1.02fr;gap:var(--pad);align-items:center;padding-block:clamp(44px,7vw,96px)}
+.eyebrow{font-family:var(--font);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);direction:ltr;text-align:right}
+.landing .eyebrow{color:var(--brown-2)}
+.hero h1{font-weight:300;font-size:clamp(38px,5.6vw,78px);line-height:1.14;letter-spacing:-.01em;margin-top:22px;color:var(--brown)}
+.hero h1 em{font-style:normal;font-weight:500}
+.hero p{max-width:460px;margin-top:24px;color:var(--brown-2);font-size:16px;line-height:1.9}
+.hero .row{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding-inline:24px;border-radius:2px;font-size:14.5px;font-weight:500;transition:background .2s,color .2s,border-color .2s}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:#3A2C22}
+.btn.ghost{border:1px solid var(--line-2)}
+.btn.ghost:hover{border-color:var(--ink)}
+.landing .btn.solid{background:var(--brown);color:var(--peach)}
+.landing .btn.solid:hover{background:#4A2009}
+.landing .btn.ghost{border-color:rgba(94,42,13,.32);color:var(--brown)}
+.landing .btn.ghost:hover{border-color:var(--brown)}
+.facts{display:flex;gap:clamp(22px,4vw,44px);margin-top:44px;font-size:12.5px;color:var(--brown-2)}
+.facts b{display:block;color:var(--brown);font-weight:400;font-size:22px;font-family:var(--font)}
+.teaser{display:none}
+
+.panel{position:relative;aspect-ratio:5/4.3;background:var(--teal) url(brand/pattern-top.webp) center/cover;border-radius:2px;overflow:hidden}
+.scard{position:absolute;inset-inline:7%;bottom:7%;background:var(--peach)}
+.scard .bags{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:16px 16px 0}
+.scard .bags img{width:100%;aspect-ratio:3/4;object-fit:contain;mix-blend-mode:multiply}
+.scard .cap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px 15px;border-top:1px solid rgba(94,42,13,.16)}
+.scard .cap div{display:flex;align-items:center;gap:10px;font-size:14px;min-width:0}
+.scard .cap a{font-size:13px;color:var(--brown-2);white-space:nowrap;border-bottom:1px solid rgba(94,42,13,.3);padding-bottom:1px;transition:color .2s,border-color .2s}
+.scard .cap a:hover{color:var(--brown);border-color:var(--brown)}
+.pill{display:inline-flex;align-items:center;height:24px;padding-inline:10px;border-radius:999px;background:var(--teal);color:var(--brown);font-size:12px;font-weight:500;white-space:nowrap}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-bottom:0}
+  .panel{aspect-ratio:auto;height:96px;margin-inline:calc(var(--pad)*-1)}
+  .scard{display:none}
+  .teaser{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-size:14px;color:var(--brown)}
+  .teaser span:last-child{border-bottom:1px solid rgba(94,42,13,.3)}
+  .facts{margin-top:34px;margin-bottom:34px}
+}
+
+/* ——— toolbar ——— */
+.bar{position:sticky;top:0;z-index:20;background:rgba(244,241,235,.94);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:20px;min-height:68px}
+.search{position:relative;flex:0 1 340px;min-width:0}
+.search svg{position:absolute;inset-inline-start:0;top:50%;translate:0 -50%;width:17px;height:17px;color:var(--mute);pointer-events:none}
+.search input{width:100%;height:44px;border:0;border-bottom:1px solid var(--line-2);background:transparent;padding-inline:28px 64px;font-size:15px;outline:none;transition:border-color .2s}
+.search input:focus{border-color:var(--ink)}
+.search input::placeholder{color:var(--mute)}
+.search input::-webkit-search-cancel-button{display:none}
+.search .x,.search kbd{position:absolute;inset-inline-end:0;top:50%;translate:0 -50%}
+.search kbd{font-family:var(--font);font-size:11px;color:var(--mute);border:1px solid var(--line-2);border-radius:3px;padding:1px 6px}
+.search .x{font-size:12px;color:var(--ink-2);padding:6px 2px;display:none}
+.search.has .x{display:block}.search.has kbd{display:none}
+@media (hover:none){.search kbd{display:none}}
+.chips{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:36px;padding-inline:14px;border-radius:999px;font-size:14px;color:var(--ink-2);display:inline-flex;align-items:center;gap:7px;transition:background .2s,color .2s;white-space:nowrap}
+.chip sup{font-family:var(--font);font-size:10.5px;color:var(--mute);top:0;vertical-align:baseline}
+.chip:hover{color:var(--ink)}
+.chip.zero{opacity:.38}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.chip[aria-pressed="true"] sup{color:#A9A095}
+.sort{position:relative;flex:none}
+.sort select{appearance:none;-webkit-appearance:none;background:transparent;border:0;height:36px;padding-inline:0 20px;font-size:13.5px;color:var(--ink-2);cursor:pointer;font-family:var(--ar)}
+.sort::after{content:"";position:absolute;left:2px;top:50%;width:6px;height:6px;border-right:1px solid var(--ink-2);border-bottom:1px solid var(--ink-2);translate:0 -70%;rotate:45deg;pointer-events:none}
+@media (max-width:900px){
+  .bar .wrap{flex-wrap:wrap;gap:6px 14px;padding-block:10px}
+  .search{flex:1 1 100%}
+  .chips{order:3;flex:1 1 100%;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad)}
+}
+
+/* ——— catalogue ——— */
+.meta{display:flex;justify-content:space-between;align-items:baseline;padding-block:28px 18px;font-size:13px;color:var(--mute)}
+.group{margin-bottom:clamp(40px,6vw,80px)}
+.ghead{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:18px;padding-block:22px 18px;border-top:1px solid var(--ink)}
+.ghead .i{font-family:var(--font);font-size:12px;color:var(--mute);direction:ltr}
+.ghead h2{font-weight:400;font-size:clamp(22px,2.4vw,30px);line-height:1.3}
+.ghead h2 small{display:block;font-family:var(--font);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:4px;direction:ltr;text-align:right}
+.ghead .p{font-size:13px;color:var(--ink-2);text-align:left}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));border-top:1px solid var(--line);border-inline-start:1px solid var(--line)}
+@media (max-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--paper);border-bottom:1px solid var(--line);border-inline-end:1px solid var(--line);display:flex;flex-direction:column;position:relative;min-width:0}
+.card .ph{background:var(--paper);aspect-ratio:3/4;overflow:hidden;cursor:zoom-in;display:block;width:100%}
+.card .ph img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img{transform:scale(1.035)}
+.card .bd{padding:4px 18px 18px;display:flex;flex-direction:column;gap:2px;flex:1}
+.card .k{font-family:var(--font);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);direction:ltr;text-align:right}
+.grouped .card .k{display:none}
+.card h3{font-weight:500;font-size:16.5px;line-height:1.4;margin-top:6px}
+.card .en{font-family:var(--font);font-size:12.5px;color:var(--mute);direction:ltr;text-align:right}
+.card .ft{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:16px}
+.price{font-size:15px;white-space:nowrap}
+.price .cur{font-family:var(--ar);font-size:11.5px;color:var(--mute);margin-inline-start:4px}
+.acts{display:flex;gap:6px}
+.ic{width:38px;height:38px;border-radius:999px;display:grid;place-items:center;border:1px solid var(--line-2);transition:background .2s,border-color .2s,color .2s}
+.ic svg{width:16px;height:16px}
+.ic:hover{border-color:var(--ink)}
+.ic.wa{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.ic.wa:hover{background:#3A2C22}
+.ic.on{background:var(--tile);border-color:var(--ink)}
+@media (max-width:560px){.card .bd{padding:2px 12px 14px}.card h3{font-size:15px}.ic{width:34px;height:34px}.price{font-size:14px}}
+.badge{position:absolute;top:14px;inset-inline-start:14px;font-size:11px;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:1px 9px;background:var(--paper);z-index:1}
+.empty{padding:90px 0 120px;text-align:center;color:var(--ink-2)}
+.empty h3{font-weight:300;font-size:28px;color:var(--ink);margin-bottom:10px}
+.empty .row{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+
+/* ——— coming soon ——— */
+#soon,#how,#catalog{scroll-margin-top:70px}
+@media (max-width:900px){#soon,#how{scroll-margin-top:150px}}
+.soon{border-top:1px solid var(--ink);padding-block:clamp(40px,6vw,72px) clamp(48px,7vw,96px)}
+.shead{display:grid;grid-template-columns:1fr auto;gap:20px 40px;align-items:end;margin-bottom:clamp(28px,4vw,44px)}
+.shead h2{font-weight:300;font-size:clamp(30px,3.6vw,48px);line-height:1.2;margin-top:16px}
+.shead h2 .ltr{font-weight:400}
+.shead p{color:var(--ink-2);margin-top:12px;max-width:560px;line-height:1.9}
+@media (max-width:760px){.shead{grid-template-columns:1fr}.shead .btn{justify-self:start}}
+.soon .card .ph{background:var(--peach-2);cursor:default}
+.soon .card h3{font-family:var(--font);direction:ltr;text-align:right;font-weight:500}
+.soon .card .mix{font-size:12.5px;color:var(--mute);margin-top:2px}
+.soon .card .note{font-size:13.5px;color:var(--ink-2);margin-top:6px;line-height:1.75}
+.soon .card .ft{flex-wrap:wrap}
+.more{display:inline-flex;align-items:center;gap:8px;height:38px;padding-inline:14px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:13px;transition:background .2s}
+.more:hover{background:#3A2C22}
+.more svg{width:15px;height:15px}
+.soonlbl{font-size:12.5px;color:var(--brown);display:inline-flex;align-items:center;gap:7px}
+.soonlbl::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.ph-oro{width:100%;height:100%;display:grid;place-items:center;background:var(--teal) url(brand/pattern-bottom.webp) center/cover}
+.ph-oro span{background:var(--peach);color:var(--brown);font-family:var(--font);padding:14px 20px;text-align:center;line-height:1.25;font-size:13px;letter-spacing:.06em}
+.ph-oro b{display:block;font-weight:500;font-size:26px;letter-spacing:.24em}
+@media (max-width:560px){.more{height:34px;padding-inline:12px;font-size:12.5px}.soon .card .note{display:none}}
+
+/* ——— how to order ——— */
+.how{border-top:1px solid var(--ink);padding-block:clamp(48px,7vw,96px);display:grid;grid-template-columns:1fr 2fr;gap:var(--pad)}
+.how h2{font-weight:300;font-size:clamp(28px,3.4vw,44px);line-height:1.2}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.steps li{list-style:none;border-top:1px solid var(--line-2);padding-top:18px}
+.steps .n{font-family:var(--font);font-size:12px;color:var(--mute)}
+.steps h4{font-weight:500;font-size:16px;margin:10px 0 6px}
+.steps p{color:var(--ink-2);font-size:14px;line-height:1.85}
+@media (max-width:900px){.how{grid-template-columns:1fr}.steps{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding-block:30px 120px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--mute)}
+footer a{color:var(--ink)}
+footer img{height:16px;width:auto;opacity:.9}
+
+/* ——— sheets ——— */
+.scrim{position:fixed;inset:0;background:rgba(33,22,15,.32);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:50;background:var(--paper);transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s;visibility:hidden}
+.sheet.on{visibility:visible;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.qv{inset-block:0;left:0;width:min(940px,100%);transform:translateX(-100%);display:grid;grid-template-columns:1fr 1fr}
+.qv.on{transform:none}
+.qv .im{background:var(--tile);display:grid;place-items:center;padding:6%}
+.qv .im img{max-height:82vh;mix-blend-mode:multiply}
+.qv .tx{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;overflow:auto}
+.close{align-self:flex-start;font-size:13px;color:var(--ink-2);display:inline-flex;gap:8px;align-items:center;padding:6px 0}
+.close:hover{color:var(--ink)}
+.qv .qcat{margin-top:clamp(28px,6vh,64px)}
+.qv h2{font-weight:300;font-size:clamp(32px,3.6vw,46px);line-height:1.15;margin-top:12px}
+.qv .en{font-family:var(--font);color:var(--mute);margin-top:8px;direction:ltr;text-align:right}
+.qv dl{margin-top:34px;border-top:1px solid var(--line)}
+.qv dl div{display:flex;justify-content:space-between;padding-block:13px;border-bottom:1px solid var(--line);font-size:14px}
+.qv dt{color:var(--mute)}
+.qv .note{margin-top:22px;color:var(--ink-2);font-size:14px;line-height:1.9}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line-2);border-radius:2px;height:48px}
+.qty button{width:44px;height:100%;font-size:18px;color:var(--ink-2)}
+.qty button:hover{color:var(--ink)}
+.qty output{min-width:34px;text-align:center;font-family:var(--font)}
+.qv .buy{margin-top:auto;padding-top:34px;display:grid;grid-template-columns:auto 1fr;gap:10px}
+.qv .buy .btn.solid{grid-column:1/-1}
+@media (max-width:760px){
+  .qv{inset:auto 0 0 0;width:100%;max-height:92vh;transform:translateY(100%);grid-template-columns:1fr;grid-template-rows:auto 1fr;border-radius:14px 14px 0 0;overflow:hidden}
+  .qv .im{padding:18px 0 0;height:36vh;overflow:hidden;display:flex;justify-content:center}
+  .qv .im img{height:100%;width:auto;max-height:none;object-fit:contain}
+  .qv .tx{padding:20px 22px 0}
+  .qv .qcat{margin-top:4px}
+  .qv h2{font-size:30px}
+  .qv dl{margin-top:20px}
+  .qv .buy{position:sticky;bottom:0;background:var(--paper);padding-block:16px 20px;margin-top:8px}
+  .qv .close{position:absolute;top:14px;inset-inline-end:16px;background:var(--paper);border-radius:999px;padding:6px 12px}
+}
+.drawer{inset-block:0;left:0;width:min(440px,100%);transform:translateX(-100%);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;border-bottom:1px solid var(--line)}
+.drawer header h2{font-weight:400;font-size:20px}
+.drawer .items{flex:1;overflow:auto;padding-inline:26px}
+.li{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding-block:14px;border-bottom:1px solid var(--line)}
+.li img{width:64px;height:85px;object-fit:contain;background:var(--tile);mix-blend-mode:multiply}
+.li h4{font-weight:500;font-size:14.5px}
+.li .s{font-size:12px;color:var(--mute)}
+.li .qty{height:34px}
+.li .qty button{width:30px;font-size:15px}
+.li .qty output{min-width:22px;font-size:13px}
+.li .rm{font-size:12px;color:var(--mute);margin-top:6px;text-decoration:underline;text-underline-offset:3px}
+.drawer .sum{padding:22px 26px 26px;border-top:1px solid var(--ink);display:grid;gap:14px}
+.drawer .tot{display:flex;justify-content:space-between;font-size:15px}
+.drawer .tot b{font-weight:500;font-size:20px}
+.drawer .hint{font-size:12.5px;color:var(--mute);line-height:1.8}
+.drawer .clr{font-size:12.5px;color:var(--mute);text-decoration:underline;text-underline-offset:3px;justify-self:center}
+.drawer .none{padding:70px 0;text-align:center;color:var(--mute)}
+.fab{position:fixed;z-index:30;bottom:20px;left:50%;translate:-50% 140%;background:var(--ink);color:var(--paper);border-radius:999px;height:52px;padding-inline:8px 22px;display:flex;align-items:center;gap:14px;font-size:14px;transition:translate .45s cubic-bezier(.2,.8,.2,1);box-shadow:0 10px 30px -12px rgba(33,22,15,.5)}
+.fab.on{translate:-50% 0}
+.fab .c{background:var(--paper);color:var(--ink);border-radius:999px;height:36px;min-width:36px;display:grid;place-items:center;font-family:var(--font);font-size:13px;padding-inline:8px}
+.fab .t{color:#ADA399;font-size:13px}
+.toast{position:fixed;z-index:60;top:20px;left:50%;translate:-50% calc(-100% - 40px);background:var(--ink);color:var(--paper);font-size:13.5px;padding:10px 18px;border-radius:999px;transition:translate .35s cubic-bezier(.2,.8,.2,1)}
+.toast.on{translate:-50% 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="landing" id="top">
+  <div class="wrap">
+    <header class="top">
+      <a class="logo" href="#top"><img src="brand/wordmark.png" alt="HoReCa Kurdistan" width="520" height="76"></a>
+      <nav>
+        <a href="#catalog" data-t="nav_products"></a>
+        <a href="#soon" data-t="nav_soon"></a>
+        <a href="#how" data-t="nav_how"></a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="ku">کوردی</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <button class="listbtn" id="openList" type="button"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="width:16px;height:16px"><path d="M5 7h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9L5 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl" data-t="list"></span> <span class="c num" id="listCount" data-n="0">0</span></button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">HoReCa Kurdistan · Hotels · Restaurants · Cafés</div>
+        <h1 data-t="hero_h1"></h1>
+        <p data-t="hero_p"></p>
+        <div class="row">
+          <a class="btn solid" href="#catalog" data-t="cta_browse"></a>
+          <a class="btn ghost" id="heroWa" href="#" target="_blank" rel="noopener"><span data-icon="wa"></span><span data-t="cta_wa"></span></a>
+        </div>
+        <a class="teaser" href="#soon"><span class="pill" data-t="soon"></span><span data-t="teaser"></span></a>
+        <div class="facts">
+          <div><b class="num" id="fTotal">82</b><span data-t="f_products"></span></div>
+          <div><b class="num">5</b><span data-t="f_cats"></span></div>
+          <div><b class="num" id="fSoon">9</b><span data-t="f_soon"></span></div>
+        </div>
+      </div>
+      <div class="panel" aria-hidden="false">
+        <div class="scard">
+          <div class="bags">
+            <img src="img/c8.webp" alt="Il Mingardi S"><img src="img/c3.webp" alt="Qualità Extra Bar"><img src="img/c1.webp" alt="Qualità Espresso">
+          </div>
+          <div class="cap">
+            <div><span class="pill" data-t="soon"></span><span data-t="soon_card"></span></div>
+            <a href="#soon" data-t="see_all"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="bar" id="catalog">
+  <div class="wrap">
+    <label class="search" id="searchBox">
+      <span class="sr" data-t="search"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="q" autocomplete="off" enterkeyhint="search">
+      <kbd>/</kbd>
+      <button type="button" class="x" id="clearQ" data-t="clear"></button>
+    </label>
+    <div class="chips" id="chips" role="group"></div>
+    <div class="sort"><label class="sr" for="sort" data-t="sort"></label><select id="sort"></select></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="meta"><span id="count"></span><span id="crumb"></span></div>
+  <div id="out"></div>
+
+  <section class="soon" id="soon">
+    <div class="shead">
+      <div>
+        <span class="pill" data-t="soon"></span>
+        <h2 data-t="soon_h2"></h2>
+        <p data-t="soon_p"></p>
+      </div>
+      <a class="btn solid" id="soonAll" href="#" target="_blank" rel="noopener"><span data-icon="wa"></span><span data-t="soon_ask"></span></a>
+    </div>
+    <div class="grid" id="soonGrid"></div>
+  </section>
+
+  <section class="how" id="how">
+    <h2 data-t="how_h2"></h2>
+    <ol class="steps">
+      <li><span class="n num">01</span><h4 data-t="s1h"></h4><p data-t="s1p"></p></li>
+      <li><span class="n num">02</span><h4 data-t="s2h"></h4><p data-t="s2p"></p></li>
+      <li><span class="n num">03</span><h4 data-t="s3h"></h4><p data-t="s3p"></p></li>
+    </ol>
+  </section>
+
+  <footer>
+    <img src="brand/wordmark.png" alt="HoReCa Kurdistan">
+    <span data-t="foot"></span>
+    <span><span data-t="wa_label"></span>: <a class="num" id="phoneLink" href="#" target="_blank" rel="noopener">+964 770 199 0880</a></span>
+  </footer>
+</main>
+
+<div class="scrim" id="scrim"></div>
+
+<aside class="sheet qv" id="qv" role="dialog" aria-modal="true" aria-labelledby="qvTitle" aria-hidden="true">
+  <div class="im"><img id="qvImg" alt=""></div>
+  <div class="tx">
+    <button class="close" type="button" data-close><span data-t="close"></span> <span aria-hidden="true">✕</span></button>
+    <div class="eyebrow qcat" id="qvCat"></div>
+    <h2 id="qvTitle"></h2>
+    <div class="en" id="qvEn"></div>
+    <dl id="qvDl"></dl>
+    <p class="note" id="qvNote"></p>
+    <div class="buy">
+      <div class="qty"><button type="button" id="qMinus">−</button><output id="qVal" class="num">1</output><button type="button" id="qPlus">+</button></div>
+      <button class="btn ghost" type="button" id="qvAdd" data-t="add"></button>
+      <a class="btn solid" id="qvWa" href="#" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+</aside>
+
+<aside class="sheet drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" aria-hidden="true">
+  <header><h2 id="drTitle" data-t="list"></h2><button class="close" type="button" data-close><span data-t="close"></span> <span aria-hidden="true">✕</span></button></header>
+  <div class="items" id="items"></div>
+  <div class="sum" id="sum"></div>
+</aside>
+
+<button class="fab" id="fab" type="button"><span class="c" id="fabC">0</span><span data-t="view_list"></span><span class="t num" id="fabT"></span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const PHONE = "9647701990880";
+const PHONE_TXT = "+964 770 199 0880";
+
+/* ——— copy ——— */
+const T = {
+ ku:{
+  title:"HoReCa Kurdistan — بەرهەمەکانی کافێ و ڕێستۆرانت",
+  nav_products:"بەرهەمەکان", nav_soon:"بەم زووانە", nav_how:"چۆنیەتی داواکردن", list:"لیستی داواکاری",
+  hero_h1:"هەموو پێداویستییەکانی کافێ،<br><em>لە یەک شوێن.</em>",
+  hero_p:"سیرۆپ، پیورێی میوە، سۆس و پاودەری <span class=\"ltr\">Essenza</span> بۆ هۆتێل، ڕێستۆرانت و کافێ. بەرهەمەکەت هەڵبژێرە و ڕاستەوخۆ لە واتساپەوە داوای بکە.",
+  cta_browse:"سەیرکردنی بەرهەمەکان", cta_wa:"پرسیار لە واتساپ",
+  soon:"بەم زووانە", soon_card:"قاوەی ئیتاڵی <span class=\"ltr\">Amigos Caffè</span>", see_all:"بینینی هەموو ←",
+  teaser:"قاوەی ئیتاڵی <span class=\"ltr\">Amigos Caffè</span>",
+  f_products:"بەرهەم", f_cats:"کۆمەڵە", f_soon:"قاوەی نوێ بەم زووانە",
+  search:"گەڕان", search_ph:"گەڕان… مانگۆ، Vanilla، سۆس", clear:"سڕینەوە", sort:"ڕیزکردن", all:"هەموو",
+  sorts:["ڕیزکردن: بنەڕەت","ناو: A–Z","نرخ: کەم بۆ زۆر","نرخ: زۆر بۆ کەم"],
+  items:"بەرهەم", results:q=>`ئەنجامی گەڕان بۆ «${q}»`, kinds:"جۆر", cur:"د.ع",
+  add:"زیادکردن بۆ لیست", inlist:"لە لیستدایە", order:"داواکردن لە واتساپ", details:"وردەکاری",
+  empty_h:"هیچ بەرهەمێک نەدۆزرایەوە.", empty_p:"وشەیەکی تر تاقی بکەرەوە، یان ڕاستەوخۆ لە واتساپ پرسیار بکە.", show_all:"پیشاندانی هەموو بەرهەمەکان",
+  added:n=>`${n} زیادکرا بۆ لیست`,
+  soon_h2:"قاوەی ئیتاڵی <span class=\"ltr\">Amigos Caffè</span>",
+  soon_p:"تێکەڵەی قاوەی ئیتاڵی لە ترێستەوە، بۆ ئامێری ئێسپرێسۆ و کافێکان. نرخ و قەبارەکان بەم زووانە ڕادەگەیەنرێن — بۆ زانیاری زیاتر لە واتساپ پرسیار بکە.",
+  soon_ask:"پرسیار دەربارەی ئەم بەرهەمانە", more:"زانیاری زیاتر", arabica:"ئەرابیکا", robusta:"ڕۆبۆستا", mix_tbd:"وردەکاری بەم زووانە",
+  how_h2:"داواکردن،<br>بە سێ هەنگاو.",
+  s1h:"هەڵبژاردن", s1p:"بە گەڕان یان کۆمەڵەکان بەرهەمەکەت بدۆزەرەوە. بۆ زانیاری زیاتر کرتە لە وێنەکە بکە.",
+  s2h:"لیست دروستکردن", s2p:"بۆ داواکاری زیاتر لە بەرهەمێک، بە دوگمەی <span class=\"num\">+</span> زیادیان بکە بۆ لیست و ژمارەکەیان دیاری بکە.",
+  s3h:"ناردن بە واتساپ", s3p:"داواکارییەکەت بە نووسینێکی ئامادەکراو دەچێتە واتساپ. تیمەکەمان وەڵامت دەداتەوە بۆ گەیاندن و پارەدان.",
+  foot:"بەرهەمەکانی <span class=\"ltr\">Essenza Hellas</span> · نرخەکان بە دیناری عێراقین.", wa_label:"واتساپ",
+  close:"داخستن", l_cat:"کۆمەڵە", l_size:"قەبارە", l_taste:"تام", l_price:"نرخ",
+  view_list:"بینینی لیست", list_empty:"لیستەکەت بەتاڵە.<br>بە دوگمەی <span class=\"num\">+</span> بەرهەم زیاد بکە.", remove:"لابردن",
+  total:"کۆی گشتی", pcs:"دانە", send:"ناردنی داواکاری بە واتساپ", clear_list:"پاککردنەوەی لیست",
+  hint:`لیستەکە وەک نامەیەکی ئامادە دەچێتە واتساپ بۆ ژمارەی <span class="num">${PHONE_TXT}</span>. پێش ناردن دەتوانیت دەستکاری بکەیت.`,
+  sizes:{L:"قوتووی گەورە",S:"قوتووی بچووک",B:"کیسەی ١ کیلۆ"},
+  m_hello:"سڵاو و ڕێز،\nپرسیارێکم هەیە دەربارەی بەرهەمەکانی HoReCa Kurdistan.",
+  m_one:(p,q)=>`سڵاو و ڕێز،\nدەمەوێت داوای ئەم بەرهەمە بکەم:\n\n${p.en} — ${p.ku}\n${cat(p.cat).ku}${p.size?" · "+T.ku.sizes[p.size]:""}\nژمارە: ${q}\nنرخ: ${fmt(p.price*q)} د.ع\n\nسوپاس بۆ هاوکاریتان.`,
+  m_list:(lines,total)=>`سڵاو و ڕێز،\nدەمەوێت داوای ئەم بەرهەمانە بکەم:\n\n${lines}\n\nکۆی گشتی: ${total} د.ع\n\nسوپاس بۆ هاوکاریتان.`,
+  m_search:q=>`سڵاو و ڕێز،\nبەدوای ئەم بەرهەمەدا دەگەڕێم: ${q}\nئایا لای ئێوە بەردەستە؟\n\nسوپاس.`,
+  m_soon_all:"سڵاو و ڕێز،\nبینیم کە بەرهەمەکانی قاوەی Amigos Caffè بەم زووانە لای ئێوە بەردەست دەبن. تکایە دەتوانن زانیاری زیاترم پێ بدەن دەربارەی ئەو بەرهەمانە — جۆرەکان، قەبارە و نرخیان، و کەی بەردەست دەبن؟\n\nزۆر سوپاس بۆ کاتتان.",
+  m_soon_one:n=>`سڵاو و ڕێز،\nبینیم کە «${n}» لە Amigos Caffè بەم زووانە لای ئێوە بەردەست دەبێت. تکایە دەتوانن زانیاری زیاترم پێ بدەن دەربارەی ئەم بەرهەمە — جۆری تێکەڵە، قەبارەی بەستەبەندی، نرخ و کاتی بەردەستبوون؟\n\nزۆر سوپاس بۆ کاتتان.`
+ },
+ ar:{
+  title:"HoReCa Kurdistan — مستلزمات المقاهي والمطاعم",
+  nav_products:"المنتجات", nav_soon:"قريباً", nav_how:"طريقة الطلب", list:"قائمة الطلب",
+  hero_h1:"كل ما يحتاجه مقهاك،<br><em>في مكان واحد.</em>",
+  hero_p:"شراب النكهات وهريس الفواكه والصوصات ومساحيق <span class=\"ltr\">Essenza</span> للفنادق والمطاعم والمقاهي. اختر منتجك واطلبه مباشرةً عبر واتساب.",
+  cta_browse:"تصفّح المنتجات", cta_wa:"تواصل عبر واتساب",
+  soon:"قريباً", soon_card:"قهوة <span class=\"ltr\">Amigos Caffè</span> الإيطالية", see_all:"عرض الكل ←",
+  teaser:"قهوة <span class=\"ltr\">Amigos Caffè</span> الإيطالية",
+  f_products:"منتجاً", f_cats:"فئات", f_soon:"أصناف قهوة قريباً",
+  search:"بحث", search_ph:"ابحث… مانجو، Vanilla، صوص", clear:"مسح", sort:"الترتيب", all:"الكل",
+  sorts:["الترتيب: الافتراضي","الاسم: A–Z","السعر: من الأقل","السعر: من الأعلى"],
+  items:"منتج", results:q=>`نتائج البحث عن «${q}»`, kinds:"صنف", cur:"د.ع",
+  add:"أضف إلى القائمة", inlist:"في القائمة", order:"اطلب عبر واتساب", details:"تفاصيل",
+  empty_h:"لم نعثر على أي منتج.", empty_p:"جرّب كلمة أخرى، أو اسألنا مباشرةً عبر واتساب.", show_all:"عرض جميع المنتجات",
+  added:n=>`أُضيف ${n} إلى القائمة`,
+  soon_h2:"قهوة <span class=\"ltr\">Amigos Caffè</span> الإيطالية",
+  soon_p:"خلطات قهوة إيطالية من تريستا، لآلات الإسبريسو والمقاهي. سيتم الإعلان عن الأسعار والأحجام قريباً — للاستفسار تواصل معنا عبر واتساب.",
+  soon_ask:"استفسر عن هذه المنتجات", more:"مزيد من المعلومات", arabica:"أرابيكا", robusta:"روبوستا", mix_tbd:"التفاصيل قريباً",
+  how_h2:"اطلب<br>بثلاث خطوات.",
+  s1h:"اختر منتجك", s1p:"ابحث عن منتجك عبر البحث أو الفئات، واضغط على الصورة لعرض التفاصيل.",
+  s2h:"أنشئ قائمتك", s2p:"لطلب أكثر من منتج، أضفها إلى القائمة بزر <span class=\"num\">+</span> وحدّد الكميات.",
+  s3h:"أرسل عبر واتساب", s3p:"يصل طلبك إلى واتساب برسالة جاهزة، وسيتواصل معك فريقنا لترتيب التوصيل والدفع.",
+  foot:"منتجات <span class=\"ltr\">Essenza Hellas</span> · الأسعار بالدينار العراقي.", wa_label:"واتساب",
+  close:"إغلاق", l_cat:"الفئة", l_size:"الحجم", l_taste:"النكهة", l_price:"السعر",
+  view_list:"عرض القائمة", list_empty:"قائمتك فارغة.<br>أضف المنتجات بزر <span class=\"num\">+</span>.", remove:"إزالة",
+  total:"المجموع", pcs:"قطعة", send:"إرسال الطلب عبر واتساب", clear_list:"مسح القائمة",
+  hint:`ستُرسل القائمة كرسالة جاهزة عبر واتساب إلى الرقم <span class="num">${PHONE_TXT}</span>، ويمكنك تعديلها قبل الإرسال.`,
+  sizes:{L:"علبة كبيرة",S:"علبة صغيرة",B:"كيس 1 كغ"},
+  m_hello:"السلام عليكم،\nلديّ استفسار بخصوص منتجات HoReCa Kurdistan.",
+  m_one:(p,q)=>`السلام عليكم،\nأودّ طلب المنتج التالي:\n\n${p.en} — ${p.ar}\n${cat(p.cat).ar}${p.size?" · "+T.ar.sizes[p.size]:""}\nالكمية: ${q}\nالسعر: ${fmt(p.price*q)} د.ع\n\nمع الشكر والتقدير.`,
+  m_list:(lines,total)=>`السلام عليكم،\nأودّ طلب المنتجات التالية:\n\n${lines}\n\nالمجموع: ${total} د.ع\n\nمع الشكر والتقدير.`,
+  m_search:q=>`السلام عليكم،\nأبحث عن المنتج التالي: ${q}\nهل هو متوفر لديكم؟\n\nمع الشكر.`,
+  m_soon_all:"السلام عليكم ورحمة الله،\nعلمتُ أن منتجات قهوة Amigos Caffè ستتوفر لديكم قريباً. أرجو التكرّم بتزويدي بمزيد من المعلومات عن هذه المنتجات، من حيث الأصناف والأحجام والأسعار وموعد التوفّر.\n\nمع خالص الشكر والتقدير.",
+  m_soon_one:n=>`السلام عليكم ورحمة الله،\nاطّلعتُ على منتج «${n}» من Amigos Caffè ضمن المنتجات القادمة. أرجو التكرّم بتزويدي بمزيد من المعلومات عنه، من حيث نوع الخلطة وأحجام التعبئة والسعر وموعد التوفّر.\n\nمع خالص الشكر والتقدير.`
+ }
+};
+
+/* ——— data ——— */
+const CATS = [
+  {id:"syrups", ku:"سیرۆپی تام", ar:"شراب النكهات", en:"Flavor Syrups",
+   nku:"سیرۆپی تام بۆ قاوە، لاتێ، ماچا، کۆکتێڵ و مۆکتێڵ.", nar:"شراب نكهات للقهوة واللاتيه والماتشا والكوكتيلات والموكتيلات."},
+  {id:"purees", ku:"پیورێی میوە", ar:"هريس الفواكه", en:"Fruit ’n’ Mix · Premium Fruit Purée",
+   nku:"پیورێی میوەی چڕ بۆ سمووزی، فرێش و خواردنەوەی سارد. بوتڵی دەستگرتنی ئاسان.", nar:"هريس فواكه مركّز للسموذي والمشروبات المنعشة والباردة، بعبوة سهلة الإمساك."},
+  {id:"sauces", ku:"سۆس", ar:"الصوصات", en:"Sauces",
+   nku:"سۆسی چڕ بۆ مۆکا، فرێپێ، دیزاینی کوپ و شیرینی.", nar:"صوص مركّز للموكا والفرابيه وتزيين الأكواب والحلويات."},
+  {id:"cremoso", ku:"پاودەری کرێمۆسۆ", ar:"مسحوق كريموسو", en:"Cremoso · Powdered Mix",
+   nku:"بنەمای پاودەر بۆ خواردنەوەی سارد و گەرم — فرێپێ، شەیک و سمووزی.", nar:"قاعدة مسحوق للمشروبات الباردة والساخنة — فرابيه وميلك شيك وسموذي."},
+  {id:"choco", ku:"چوکلێتی خواردنەوە", ar:"الشوكولاتة الساخنة", en:"Choco ’n’ Mix · Drinking Chocolate",
+   nku:"پاودەری چوکلێتی گەرم بۆ کافێ و ماڵ.", nar:"مسحوق شوكولاتة ساخنة للمقاهي والمنازل."}
+];
+const S="syrups",P="purees",SA="sauces",C="cremoso",CH="choco";
+// [img, cat, english, kurdish, arabic, price, size, taste ku, taste ar]
+const RAW = [
+ [0,S,"Biscuit","بسکیت","بسكويت",19000],[1,S,"Blackberry","بلاکبێری","بلاك بيري",19000],[2,S,"Blue Blueberry","بلوبێری شین","بلوبيري أزرق",19000],[3,S,"Blue Curaçao","بلو کوراساو","بلو كوراساو",19000],[4,S,"Blueberry","بلوبێری","بلوبيري",19000],[5,S,"Bubblegum","بەبڵگەم","علكة",19000],[6,S,"Caramel","کەرامێل","كراميل",19000],[7,S,"Cardamom","هێل","هيل",19000],[8,S,"Chocolate","چوکلێت","شوكولاتة",19000],
+ [9,S,"Cinnamon","دارچین","قرفة",19000],[10,S,"Coconut","گوێزی هیندی","جوز الهند",19000],[11,S,"Cucumber","خەیار","خيار",19000],[12,S,"Dragon Fruit","دراگۆن فروت","فاكهة التنين",19000],[13,S,"Espresso","ئێسپرێسۆ","إسبريسو",19000],[14,S,"Falernum","فالێرنەم","فاليرنوم",19000],[15,S,"Garden Mint","پونگ","نعناع",19000],[16,S,"Grapefruit","گرێپفروت","جريب فروت",19000],[17,S,"Green Apple","سێوی سەوز","تفاح أخضر",19000],[18,S,"Grenadine","گرێنادین","غرينادين",19000],[19,S,"Hazelnut","بندق","بندق",19000],[20,S,"Hibiscus","هیبسکەس","كركديه",19000],
+ [21,S,"Kiwi","کیوی","كيوي",19000],[22,S,"Lavender","لاڤەندەر","لافندر",19000],[23,S,"Lemon","لیمۆ","ليمون",19000],[24,S,"Lime","لایم","لايم",19000],[25,S,"Mango","مانگۆ","مانجو",19000],[26,S,"Mastic","مەستەکی","مستكة",19000],[27,S,"Mixed Berries","بێری تێکەڵ","توت مشكّل",19000],[28,S,"Mojito","مۆهیتۆ","موهيتو",19000],[29,S,"Passion Fruit","پاشن فروت","باشن فروت",19000],[30,S,"Peach","قۆخ","خوخ",19000],[31,S,"Peppermint","پێپەرمینت","نعناع فلفلي",19000],[32,S,"Pineapple","ئەناناس","أناناس",19000],
+ [33,S,"Pomegranate","هەنار","رمان",19000],[34,S,"Raspberry","ڕاسبێری","راسبيري",19000],[35,S,"Rose","گوڵ","ورد",19000],[36,S,"Salted Caramel","کەرامێلی سوێر","كراميل مملّح",19000],[37,S,"Spices","بەهارات","بهارات",19000],[38,S,"Strawberry","شلیک","فراولة",19000],[39,S,"Toffee","تۆفی","توفي",19000],[40,S,"Vanilla","ڤانێلا","فانيلا",19000],[41,S,"Watermelon","شووتی","بطيخ",19000],[42,S,"Almond","بادەم","لوز",19000],[43,S,"Apple","سێو","تفاح",19000],[44,S,"Banana","مۆز","موز",19000],
+ [45,P,"Cherry","گێلاس","كرز",22000],[46,P,"Coconut","گوێزی هیندی","جوز الهند",22000],[47,P,"Dragon Fruit","دراگۆن فروت","فاكهة التنين",22000],[48,P,"Forest Fruits","میوەی دارستان","فواكه الغابة",22000],[49,P,"Green Apple","سێوی سەوز","تفاح أخضر",22000],[50,P,"Kiwi","کیوی","كيوي",22000],[51,P,"Lemon","لیمۆ","ليمون",22000],[52,P,"Lime","لایم","لايم",22000],[53,P,"Mandarin","لاڵەنگی","يوسفي",22000],
+ [54,P,"Mango","مانگۆ","مانجو",22000],[55,P,"Melon","کاڵەک","شمام",22000],[56,P,"Passion Fruit","پاشن فروت","باشن فروت",22000],[57,P,"Peach","قۆخ","خوخ",22000],[58,P,"Pineapple","ئەناناس","أناناس",22000],[59,P,"Pomegranate","هەنار","رمان",22000],[60,P,"Raspberry","ڕاسبێری","راسبيري",22000],[61,P,"Strawberry","شلیک","فراولة",22000],[62,P,"Watermelon","شووتی","بطيخ",22000],[63,P,"Banana","مۆز","موز",22000],[64,P,"Blackberry","بلاکبێری","بلاك بيري",22000],[65,P,"Blueberry","بلوبێری","بلوبيري",22000],
+ [66,C,"Cremoso Smoothie Base","بنەمای سمووزی","قاعدة سموذي",50000],[67,C,"Cremoso Vanilla Base","بنەمای ڤانێلا","قاعدة فانيلا",50000],[68,C,"Cremoso Chocolate Base","بنەمای چوکلێت","قاعدة شوكولاتة",50000],[69,C,"Cremoso Non-Dairy Base","بنەمای بێ شیر","قاعدة خالية من الألبان",50000],
+ [70,SA,"Caramel Sauce","سۆسی کەرامێل","صوص كراميل",33000],[71,SA,"Chocolate Sauce","سۆسی چوکلێت","صوص شوكولاتة",33000],[72,SA,"White Chocolate Sauce","سۆسی چوکلێتی سپی","صوص شوكولاتة بيضاء",33000],
+ [73,CH,"Chocolate Milk Essenza","ئێسێنزا","إيسنزا",24000,"L","چڕ و کرێمی","غني وكريمي"],[74,CH,"Chocolate Milk Supreme","سوپرێم","سوبريم",24000,"L","تامی بەهێز","مذاق مكثّف"],[75,CH,"Chocolate Premium Milk","پرێمیەم","بريميوم",24000,"L","تامی تەواو","مذاق كامل"],[76,CH,"Chocolate Milk Classica","کلاسیکا","كلاسيكا",24000,"L","نەرم و لووس","ناعم وحريري"],[77,CH,"Chocolate Milk Classica","کلاسیکا — کیسە","كلاسيكا — كيس",23000,"B","نەرم و لووس","ناعم وحريري"],
+ [78,CH,"Chocolate Leela","لیلا","ليلا",13000,"S","شلیک و کرێم","فراولة وكريمة"],[79,CH,"Chocolate with Hazelnut","چوکلێت و بندق","شوكولاتة بالبندق",13000,"S","بندق","بندق"],[80,CH,"Chocolate Buonito","بوونیتۆ","بوونيتو",13000,"S","وەیفەر، کرێم و بندق","ويفر وكريمة وبندق"],[81,CH,"Chios Mastic Chocolate","چوکلێت و مەستەکی","شوكولاتة بالمستكة",13000,"S","مەستەکیی خیۆس","مستكة خيوس"]
+];
+/* coming soon — Amigos Caffè (names as in the supplier list) */
+const SOON = [
+ {img:"c1", name:"Qualità Espresso", mix:[40,60], ku:"کرێمای چڕ و ترشێتیی زۆر کەم.", ar:"كريما كثيفة وحموضة شبه معدومة."},
+ {img:"c2", name:"Qualità Blu 1 kg", mix:[60,40], ku:"نەرم و شیرین، بە تامێکی چوکلێتی.", ar:"مذاق ناعم وحلو بلمسة من الشوكولاتة."},
+ {img:"c3", name:"Qualità Extra Bar", mix:[80,20], ku:"هاوسەنگ و پڕ، بە بۆنێکی میوەیی.", ar:"متوازن وغني برائحة فاكهية."},
+ {img:"c4", name:"Il Mingardi S Premium", mix:[33,67], ku:"کرێمی، بە بۆنی میوەی وشک و کاکاو.", ar:"كريمي بنفحات الفواكه المجففة والكاكاو."},
+ {img:"c5", name:"Qualità Extra Bar (Vending)", mix:[5,95], ku:"تامێکی شیرین، بۆ ئامێری فرۆشتنی ئۆتۆماتیکی.", ar:"مذاق حلو، مخصص لآلات البيع الذاتي."},
+ {img:"c6", name:"Qualità Extra Bar ORO", mix:[5,95], ku:"قاوەی هاڕاو، پاکەتی ٢٥٠ گرامی.", ar:"قهوة مطحونة، عبوة 250 غ."},
+ {img:"c7", name:"Qualità 1995 Blend", mix:[100,0], ku:"مەخمەڵی و ناسک، بە دوای تامێکی بۆنخۆش.", ar:"مذاق مخملي ورقيق بنهاية عطرية."},
+ {img:"c8", name:"Il Mingardi S", mix:[80,20], ku:"بۆنی کاکاو، بادەم و پرتەقاڵ.", ar:"نفحات الكاكاو واللوز والبرتقال."},
+ {img:"c9", name:"Qualità Blu", mix:[60,40], ku:"تامێکی هاوسەنگ بۆ بەیانیان و دوای نیوەڕۆ.", ar:"مذاق متوازن للصباح وما بعد الظهر."}
+];
+
+const cat = id => CATS.find(c=>c.id===id);
+const fmt = n => n.toLocaleString("en-US");
+const $ = s => document.querySelector(s);
+const PRODUCTS = RAW.map(([img,c,en,ku,ar,price,size,dku,dar])=>({id:"p"+img,img:`img/${String(img).padStart(2,"0")}.webp`,cat:c,en,ku,ar,price,size,dku,dar,order:img}));
+const byId = Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
+
+const norm = s => (s||"").toLowerCase()
+  .replace(/[ً-ْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/ؤ/g,"و").replace(/[ئء]/g,"")
+  .replace(/[يى]/g,"ی").replace(/ك/g,"ک").replace(/ة/g,"ه").replace(/[ۆو]/g,"و").replace(/[ێې]/g,"ی").replace(/ڕ/g,"ر").replace(/ڵ/g,"ل").replace(/ڤ/g,"ف").replace(/[ەه]/g,"ه")
+  .replace(/[’'\-\s·.,—]/g,"").replace(/[çà]/g,m=>({ç:"c",à:"a"}[m]));
+PRODUCTS.forEach(p=>{const c=cat(p.cat);p.hay=norm([p.en,p.ku,p.ar,c.ku,c.ar,c.en,p.dku,p.dar].join("|"))});
+
+const waLink = text => `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
+const IC = {
+  wa:'<svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>'
+};
+document.querySelectorAll("[data-icon]").forEach(el=>el.outerHTML=IC[el.dataset.icon]);
+
+/* ——— state ——— */
+const store = {get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let lang = store.get("horeca-lang","ku"); if(!T[lang]) lang="ku";
+let state = {cat:"all", q:"", sort:"def"};
+let list = store.get("horeca-list",{}) || {};
+for (const k in list) if(!byId[k] || !(list[k]>0)) delete list[k];
+const saveList = () => store.set("horeca-list", list);
+const t = k => T[lang][k];
+const pname = p => p[lang];
+const cname = id => cat(id)[lang];
+
+/* ——— language ——— */
+function applyLang(){
+  document.documentElement.lang = lang==="ar" ? "ar" : "ckb";
+  document.title = t("title");
+  document.querySelectorAll("[data-t]").forEach(el=>{ el.innerHTML = t(el.dataset.t) });
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
+  $("#q").placeholder = t("search_ph");
+  $("#sort").innerHTML = ["def","az","lo","hi"].map((v,i)=>`<option value="${v}">${t("sorts")[i]}</option>`).join("");
+  $("#sort").value = state.sort;
+  $("#chips").setAttribute("aria-label", t("l_cat"));
+  $("#heroWa").href = waLink(t("m_hello"));
+  $("#phoneLink").href = waLink(t("m_hello"));
+  $("#soonAll").href = waLink(t("m_soon_all"));
+  $("#qMinus").setAttribute("aria-label","−"); $("#qPlus").setAttribute("aria-label","+");
+  render(); renderSoon(); refreshList();
+  if(openSheet===$("#qv") && qvItem) fillQv();
+}
+document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{ if(lang===b.dataset.lang) return; lang=b.dataset.lang; store.set("horeca-lang",lang); applyLang() });
+
+/* ——— catalogue ——— */
+function renderChips(){
+  const q = norm(state.q);
+  const pool = PRODUCTS.filter(p=>!q || p.hay.includes(q));
+  const n = id => id==="all" ? pool.length : pool.filter(p=>p.cat===id).length;
+  const all = [{id:"all"}, ...CATS];
+  $("#chips").innerHTML = all.map(c=>`<button class="chip${n(c.id)?"":" zero"}" type="button" data-cat="${c.id}" aria-pressed="${state.cat===c.id}">${c.id==="all"?t("all"):c[lang]}<sup class="num">${n(c.id)}</sup></button>`).join("");
+}
+function card(p){
+  const c = cat(p.cat), inList = !!list[p.id];
+  return `<article class="card" data-id="${p.id}">
+    ${p.size?`<span class="badge">${t("sizes")[p.size]}</span>`:""}
+    <button class="ph" type="button" data-open="${p.id}" aria-label="${t("details")} — ${pname(p)}"><img src="${p.img}" alt="${p.en} — ${pname(p)}" loading="lazy" width="600" height="800"></button>
+    <div class="bd">
+      <div class="k">${c.en.split(" · ")[0]}</div>
+      <h3>${pname(p)}</h3>
+      <div class="en">${p.en}</div>
+      <div class="ft">
+        <div class="price"><span class="num">${fmt(p.price)}</span><span class="cur">${t("cur")}</span></div>
+        <div class="acts">
+          <button class="ic ${inList?"on":""}" type="button" data-add="${p.id}" aria-label="${inList?t("inlist"):t("add")}" title="${inList?t("inlist"):t("add")}">${inList?IC.check:IC.plus}</button>
+          <a class="ic wa" href="${waLink(t("m_one")(p,1))}" target="_blank" rel="noopener" aria-label="${t("order")}" title="${t("order")}">${IC.wa}</a>
+        </div>
+      </div>
+    </div>
+  </article>`;
+}
+function render(){
+  const q = norm(state.q);
+  let items = PRODUCTS.filter(p=>(state.cat==="all"||p.cat===state.cat) && (!q||p.hay.includes(q)));
+  const sorters = {def:(a,b)=>a.order-b.order, az:(a,b)=>a.en.localeCompare(b.en)||a.order-b.order, lo:(a,b)=>a.price-b.price||a.order-b.order, hi:(a,b)=>b.price-a.price||a.order-b.order};
+  items.sort(sorters[state.sort]);
+  $("#count").innerHTML = `<span class="num">${items.length}</span> ${t("items")}`;
+  $("#crumb").textContent = state.q ? t("results")(state.q) : "";
+  renderChips();
+  const out = $("#out");
+  out.classList.toggle("grouped", state.sort==="def");
+  if(!items.length){
+    out.innerHTML = `<div class="empty"><h3>${t("empty_h")}</h3><p>${t("empty_p")}</p>
+      <div class="row"><button class="btn ghost" type="button" id="reset">${t("show_all")}</button><a class="btn solid" href="${waLink(t("m_search")(state.q))}" target="_blank" rel="noopener">${IC.wa}${t("cta_wa")}</a></div></div>`;
+    $("#reset").onclick = ()=>{state.q="";state.cat="all";$("#q").value="";syncSearch();render();setHash()};
+    return;
+  }
+  if(state.sort==="def"){
+    const groups = CATS.map((c,i)=>({c,i,list:items.filter(p=>p.cat===c.id)})).filter(g=>g.list.length);
+    out.innerHTML = groups.map(g=>{
+      const prices=[...new Set(g.list.map(p=>p.price))].sort((a,b)=>a-b);
+      const pr = prices.length>1?`<span class="num">${fmt(prices[0])}–${fmt(prices.at(-1))}</span> ${t("cur")}`:`<span class="num">${fmt(prices[0])}</span> ${t("cur")}`;
+      return `<section class="group"><div class="ghead"><span class="i">${String(g.i+1).padStart(2,"0")}</span><h2>${g.c[lang]}<small>${g.c.en}</small></h2><span class="p">${pr} · <span class="num">${g.list.length}</span> ${t("kinds")}</span></div><div class="grid">${g.list.map(card).join("")}</div></section>`;
+    }).join("");
+  } else {
+    out.innerHTML = `<div class="grid" style="margin-bottom:80px">${items.map(card).join("")}</div>`;
+  }
+}
+function renderSoon(){
+  const mix = m => !m ? t("mix_tbd") : [m[0]?`<span class="num">${m[0]}%</span> ${t("arabica")}`:"", m[1]?`<span class="num">${m[1]}%</span> ${t("robusta")}`:""].filter(Boolean).join(" · ");
+  $("#soonGrid").innerHTML = SOON.map(s=>`<article class="card">
+    <div class="ph">${s.img?`<img src="img/${s.img}.webp" alt="${s.name}" loading="lazy" width="600" height="800">`:`<div class="ph-oro"><span class="ltr">Qualità Extra Bar<b>ORO</b></span></div>`}</div>
+    <div class="bd">
+      <div class="k">Amigos Caffè</div>
+      <h3>${s.name}</h3>
+      <div class="mix">${mix(s.mix)}</div>
+      <p class="note">${s[lang]}</p>
+      <div class="ft"><span class="soonlbl">${t("soon")}</span><a class="more" href="${waLink(t("m_soon_one")(s.name))}" target="_blank" rel="noopener">${IC.wa}${t("more")}</a></div>
+    </div></article>`).join("");
+  $("#fSoon").textContent = SOON.length;
+}
+
+/* search */
+const qEl = $("#q");
+function syncSearch(){ $("#searchBox").classList.toggle("has", !!qEl.value) }
+let tm; qEl.addEventListener("input",()=>{ syncSearch(); clearTimeout(tm); tm=setTimeout(()=>{state.q=qEl.value.trim();render()},90) });
+$("#clearQ").onclick = ()=>{ qEl.value=""; state.q=""; syncSearch(); render(); qEl.focus() };
+document.addEventListener("keydown",e=>{
+  if(e.key==="/" && document.activeElement!==qEl && !/input|textarea|select/i.test(document.activeElement.tagName)){ e.preventDefault(); qEl.focus(); }
+  if(e.key==="Escape"){ if(openSheet) closeAll(); else if(document.activeElement===qEl && qEl.value){ $("#clearQ").click() } }
+});
+$("#sort").onchange = e=>{ state.sort=e.target.value; render() };
+
+function setHash(){ try{ history.replaceState(null,"",state.cat==="all"?location.pathname+location.search:"#"+state.cat) }catch(e){} }
+function readHash(){ const h=location.hash.slice(1); if(CATS.some(c=>c.id===h)) state.cat=h; else if(!h) state.cat="all"; }
+$("#chips").addEventListener("click",e=>{
+  const b=e.target.closest("[data-cat]"); if(!b) return;
+  state.cat=b.dataset.cat; render(); setHash();
+  const bar=$(".bar"); if(bar.getBoundingClientRect().top>1) bar.scrollIntoView({behavior:"smooth"});
+});
+window.addEventListener("hashchange",()=>{ readHash(); render() });
+
+/* list */
+const listCount = () => Object.values(list).reduce((a,b)=>a+b,0);
+const listTotal = () => Object.entries(list).reduce((a,[id,q])=>a+byId[id].price*q,0);
+function refreshList(){
+  const n=listCount();
+  $("#listCount").textContent=n; $("#listCount").dataset.n=n;
+  $("#fabC").textContent=n; $("#fabT").textContent = n?`${fmt(listTotal())} ${t("cur")}`:"";
+  $("#fab").classList.toggle("on", n>0 && !openSheet);
+  if(openSheet===$("#drawer")) renderDrawer();
+}
+function addToList(id,q=1){
+  list[id]=(list[id]||0)+q; saveList(); refreshList();
+  document.querySelectorAll(`[data-add="${id}"]`).forEach(b=>{b.classList.add("on");b.innerHTML=IC.check;b.setAttribute("aria-label",t("inlist"));b.title=t("inlist")});
+  toast(t("added")(pname(byId[id])));
+}
+function renderDrawer(){
+  const ids=Object.keys(list);
+  if(!ids.length){ $("#items").innerHTML=`<div class="none">${t("list_empty")}</div>`; $("#sum").innerHTML=""; return; }
+  $("#items").innerHTML = ids.map(id=>{const p=byId[id];return `<div class="li"><img src="${p.img}" alt=""><div><h4>${pname(p)}</h4><div class="s"><span class="ltr">${p.en}</span> · ${cname(p.cat)}${p.size?" · "+t("sizes")[p.size]:""}</div><div class="s num">${fmt(p.price)} × ${list[id]}</div><button class="rm" type="button" data-rm="${id}">${t("remove")}</button></div><div class="qty"><button type="button" data-dec="${id}" aria-label="−">−</button><output class="num">${list[id]}</output><button type="button" data-inc="${id}" aria-label="+">+</button></div></div>`}).join("");
+  const lines = ids.map((id,i)=>{const p=byId[id];return `${i+1}. ${p.en} — ${pname(p)} (${cname(p.cat)}${p.size?"، "+t("sizes")[p.size]:""}) × ${list[id]} = ${fmt(p.price*list[id])} د.ع`}).join("\n");
+  $("#sum").innerHTML = `<div class="tot"><span>${t("total")} · <span class="num">${listCount()}</span> ${t("pcs")}</span><b class="num">${fmt(listTotal())} <span style="font-family:var(--ar);font-size:13px;color:var(--mute)">${t("cur")}</span></b></div>
+    <a class="btn solid" href="${waLink(t("m_list")(lines,fmt(listTotal())))}" target="_blank" rel="noopener">${IC.wa}${t("send")}</a>
+    <div class="hint">${t("hint")}</div>
+    <button class="clr" type="button" id="clr">${t("clear_list")}</button>`;
+  $("#clr").onclick=()=>{ list={}; saveList(); refreshList(); render() };
+}
+$("#items").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  const {inc,dec,rm}=b.dataset;
+  if(inc) list[inc]++;
+  if(dec){ list[dec]--; if(list[dec]<1) delete list[dec]; }
+  if(rm) delete list[rm];
+  saveList(); refreshList(); if(dec||rm) render();
+});
+
+/* sheets */
+let openSheet=null, lastFocus=null, qvItem=null, qvQty=1;
+function show(el){
+  lastFocus=document.activeElement; openSheet=el;
+  el.classList.add("on"); el.setAttribute("aria-hidden","false"); $("#scrim").classList.add("on");
+  document.body.style.overflow="hidden"; $("#fab").classList.remove("on");
+  setTimeout(()=>el.querySelector("[data-close]").focus({preventScroll:true}),60);
+}
+function closeAll(){
+  document.querySelectorAll(".sheet.on").forEach(s=>{s.classList.remove("on");s.setAttribute("aria-hidden","true")});
+  $("#scrim").classList.remove("on"); document.body.style.overflow=""; openSheet=null; refreshList();
+  if(lastFocus) lastFocus.focus({preventScroll:true});
+}
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=closeAll);
+$("#scrim").onclick=closeAll;
+const openDrawer=()=>{ renderDrawer(); show($("#drawer")) };
+$("#openList").onclick=openDrawer; $("#fab").onclick=openDrawer;
+
+function setQv(){
+  $("#qVal").textContent=qvQty;
+  $("#qvWa").innerHTML=`${IC.wa}${t("order")} · <span class="num">${fmt(qvItem.price*qvQty)}</span> ${t("cur")}`;
+  $("#qvWa").href=waLink(t("m_one")(qvItem,qvQty));
+}
+function fillQv(){
+  const p=qvItem, c=cat(p.cat);
+  $("#qvImg").src=p.img; $("#qvImg").alt=p.en;
+  $("#qvCat").textContent=c.en; $("#qvTitle").textContent=pname(p); $("#qvEn").textContent=p.en;
+  const taste = lang==="ar"?p.dar:p.dku;
+  $("#qvDl").innerHTML=`<div><dt>${t("l_cat")}</dt><dd>${c[lang]}</dd></div>${p.size?`<div><dt>${t("l_size")}</dt><dd>${t("sizes")[p.size]}</dd></div>`:""}${taste?`<div><dt>${t("l_taste")}</dt><dd>${taste}</dd></div>`:""}<div><dt>${t("l_price")}</dt><dd><span class="num">${fmt(p.price)}</span> ${t("cur")}</dd></div>`;
+  $("#qvNote").textContent = lang==="ar"?c.nar:c.nku;
+  setQv();
+}
+function openQv(id){ qvItem=byId[id]; qvQty=1; fillQv(); show($("#qv")) }
+$("#qMinus").onclick=()=>{ if(qvQty>1){qvQty--;setQv()} };
+$("#qPlus").onclick=()=>{ qvQty++;setQv() };
+$("#qvAdd").onclick=()=>{ addToList(qvItem.id,qvQty); closeAll() };
+
+$("#out").addEventListener("click",e=>{
+  const o=e.target.closest("[data-open]"); if(o) return openQv(o.dataset.open);
+  const a=e.target.closest("[data-add]"); if(a){ if(list[a.dataset.add]) openDrawer(); else addToList(a.dataset.add); }
+});
+
+let tt; function toast(m){ const el=$("#toast"); el.textContent=m; el.classList.add("on"); clearTimeout(tt); tt=setTimeout(()=>el.classList.remove("on"),1800) }
+
+$("#fTotal").textContent=PRODUCTS.length;
+readHash(); applyLang();
+</script>
+</body>
+</html>
