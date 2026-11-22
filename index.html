@@ -293,7 +293,7 @@ footer img{height:16px;width:auto;opacity:.9}
         <a class="teaser" href="#soon"><span class="pill" data-t="soon"></span><span data-t="teaser"></span></a>
         <div class="facts">
           <div><b class="num" id="fTotal">83</b><span data-t="f_products"></span></div>
-          <div><b class="num">5</b><span data-t="f_cats"></span></div>
+          <div><b class="num" id="fCats">6</b><span data-t="f_cats"></span></div>
           <div><b class="num" id="fSoon">9</b><span data-t="f_soon"></span></div>
         </div>
       </div>
@@ -396,7 +396,7 @@ const T = {
   title:"HoReCa Kurdistan — بەرهەمەکانی کافێ و ڕێستۆرانت",
   nav_products:"بەرهەمەکان", nav_soon:"بەم زووانە", nav_how:"چۆنیەتی داواکردن", list:"لیستی داواکاری",
   hero_h1:"هەموو پێداویستییەکانی کافێ،<br><em>لە یەک شوێن.</em>",
-  hero_p:"سیرۆپ، پیورێی میوە، سۆس و پاودەری <span class=\"ltr\">Essenza</span> بۆ هۆتێل، ڕێستۆرانت و کافێ. بەرهەمەکەت هەڵبژێرە و ڕاستەوخۆ لە واتساپەوە داوای بکە.",
+  hero_p:"سیرۆپ، پیورێی میوە، سۆس و پاودەری <span class=\"ltr\">Essenza</span> و <span class=\"ltr\">Flair</span> بۆ هۆتێل، ڕێستۆرانت و کافێ. بەرهەمەکەت هەڵبژێرە و ڕاستەوخۆ لە واتساپەوە داوای بکە.",
   cta_browse:"سەیرکردنی بەرهەمەکان", cta_wa:"پرسیار لە واتساپ",
   soon:"بەم زووانە", soon_card:"قاوەی ئیتاڵی <span class=\"ltr\">Amigos Caffè</span>", see_all:"بینینی هەموو ←",
   teaser:"قاوەی ئیتاڵی <span class=\"ltr\">Amigos Caffè</span>",
@@ -414,12 +414,12 @@ const T = {
   s1h:"هەڵبژاردن", s1p:"بە گەڕان یان کۆمەڵەکان بەرهەمەکەت بدۆزەرەوە. بۆ زانیاری زیاتر کرتە لە وێنەکە بکە.",
   s2h:"لیست دروستکردن", s2p:"بۆ داواکاری زیاتر لە بەرهەمێک، بە دوگمەی <span class=\"num\">+</span> زیادیان بکە بۆ لیست و ژمارەکەیان دیاری بکە.",
   s3h:"ناردن بە واتساپ", s3p:"داواکارییەکەت بە نووسینێکی ئامادەکراو دەچێتە واتساپ. تیمەکەمان وەڵامت دەداتەوە بۆ گەیاندن و پارەدان.",
-  foot:"بەرهەمەکانی <span class=\"ltr\">Essenza Hellas</span> · نرخەکان بە دیناری عێراقین.", wa_label:"واتساپ",
+  foot:"بەرهەمەکانی <span class=\"ltr\">Essenza Hellas</span> و <span class=\"ltr\">Flair</span> · نرخەکان بە دیناری عێراقین.", wa_label:"واتساپ",
   close:"داخستن", l_cat:"کۆمەڵە", l_size:"قەبارە", l_taste:"تام", l_price:"نرخ",
   view_list:"بینینی لیست", list_empty:"لیستەکەت بەتاڵە.<br>بە دوگمەی <span class=\"num\">+</span> بەرهەم زیاد بکە.", remove:"لابردن",
   total:"کۆی گشتی", pcs:"دانە", send:"ناردنی داواکاری بە واتساپ", clear_list:"پاککردنەوەی لیست",
   hint:`لیستەکە وەک نامەیەکی ئامادە دەچێتە واتساپ بۆ ژمارەی <span class="num">${PHONE_TXT}</span>. پێش ناردن دەتوانیت دەستکاری بکەیت.`,
-  sizes:{L:"قوتووی گەورە",S:"قوتووی بچووک",B:"کیسەی ١ کیلۆ"},
+  sizes:{L:"قوتووی گەورە",S:"قوتووی بچووک",B:"کیسەی ١ کیلۆ",P13:"١٫٣ کیلۆ",L1:"١ لیتر"},
   m_hello:"سڵاو و ڕێز،\nپرسیارێکم هەیە دەربارەی بەرهەمەکانی HoReCa Kurdistan.",
   m_one:(p,q)=>`سڵاو و ڕێز،\nدەمەوێت داوای ئەم بەرهەمە بکەم:\n\n${p.en} — ${p.ku}\n${cat(p.cat).ku}${p.size?" · "+T.ku.sizes[p.size]:""}\nژمارە: ${q}\nنرخ: ${fmt(p.price*q)} د.ع\n\nسوپاس بۆ هاوکاریتان.`,
   m_list:(lines,total)=>`سڵاو و ڕێز،\nدەمەوێت داوای ئەم بەرهەمانە بکەم:\n\n${lines}\n\nکۆی گشتی: ${total} د.ع\n\nسوپاس بۆ هاوکاریتان.`,
@@ -431,7 +431,7 @@ const T = {
   title:"HoReCa Kurdistan — مستلزمات المقاهي والمطاعم",
   nav_products:"المنتجات", nav_soon:"قريباً", nav_how:"طريقة الطلب", list:"قائمة الطلب",
   hero_h1:"كل ما يحتاجه مقهاك،<br><em>في مكان واحد.</em>",
-  hero_p:"شراب النكهات وهريس الفواكه والصوصات ومساحيق <span class=\"ltr\">Essenza</span> للفنادق والمطاعم والمقاهي. اختر منتجك واطلبه مباشرةً عبر واتساب.",
+  hero_p:"شراب النكهات وهريس الفواكه والصوصات ومساحيق <span class=\"ltr\">Essenza</span> و<span class=\"ltr\">Flair</span> للفنادق والمطاعم والمقاهي. اختر منتجك واطلبه مباشرةً عبر واتساب.",
   cta_browse:"تصفّح المنتجات", cta_wa:"تواصل عبر واتساب",
   soon:"قريباً", soon_card:"قهوة <span class=\"ltr\">Amigos Caffè</span> الإيطالية", see_all:"عرض الكل ←",
   teaser:"قهوة <span class=\"ltr\">Amigos Caffè</span> الإيطالية",
@@ -449,12 +449,12 @@ const T = {
   s1h:"اختر منتجك", s1p:"ابحث عن منتجك عبر البحث أو الفئات، واضغط على الصورة لعرض التفاصيل.",
   s2h:"أنشئ قائمتك", s2p:"لطلب أكثر من منتج، أضفها إلى القائمة بزر <span class=\"num\">+</span> وحدّد الكميات.",
   s3h:"أرسل عبر واتساب", s3p:"يصل طلبك إلى واتساب برسالة جاهزة، وسيتواصل معك فريقنا لترتيب التوصيل والدفع.",
-  foot:"منتجات <span class=\"ltr\">Essenza Hellas</span> · الأسعار بالدينار العراقي.", wa_label:"واتساب",
+  foot:"منتجات <span class=\"ltr\">Essenza Hellas</span> و<span class=\"ltr\">Flair</span> · الأسعار بالدينار العراقي.", wa_label:"واتساب",
   close:"إغلاق", l_cat:"الفئة", l_size:"الحجم", l_taste:"النكهة", l_price:"السعر",
   view_list:"عرض القائمة", list_empty:"قائمتك فارغة.<br>أضف المنتجات بزر <span class=\"num\">+</span>.", remove:"إزالة",
   total:"المجموع", pcs:"قطعة", send:"إرسال الطلب عبر واتساب", clear_list:"مسح القائمة",
   hint:`ستُرسل القائمة كرسالة جاهزة عبر واتساب إلى الرقم <span class="num">${PHONE_TXT}</span>، ويمكنك تعديلها قبل الإرسال.`,
-  sizes:{L:"علبة كبيرة",S:"علبة صغيرة",B:"كيس 1 كغ"},
+  sizes:{L:"علبة كبيرة",S:"علبة صغيرة",B:"كيس 1 كغ",P13:"1.3 كغ",L1:"1 لتر"},
   m_hello:"السلام عليكم،\nلديّ استفسار بخصوص منتجات HoReCa Kurdistan.",
   m_one:(p,q)=>`السلام عليكم،\nأودّ طلب المنتج التالي:\n\n${p.en} — ${p.ar}\n${cat(p.cat).ar}${p.size?" · "+T.ar.sizes[p.size]:""}\nالكمية: ${q}\nالسعر: ${fmt(p.price*q)} د.ع\n\nمع الشكر والتقدير.`,
   m_list:(lines,total)=>`السلام عليكم،\nأودّ طلب المنتجات التالية:\n\n${lines}\n\nالمجموع: ${total} د.ع\n\nمع الشكر والتقدير.`,
@@ -466,26 +466,29 @@ const T = {
 
 /* ——— data ——— */
 const CATS = [
-  {id:"syrups", ku:"سیرۆپی تام", ar:"شراب النكهات", en:"Flavor Syrups",
+  {id:"syrups", ku:"سیرۆپی تام", ar:"شراب النكهات", en:"Essenza · Flavor Syrups",
    nku:"سیرۆپی تام بۆ قاوە، لاتێ، ماچا، کۆکتێڵ و مۆکتێڵ.", nar:"شراب نكهات للقهوة واللاتيه والماتشا والكوكتيلات والموكتيلات."},
-  {id:"purees", ku:"پیورێی میوە", ar:"هريس الفواكه", en:"Fruit ’n’ Mix · Premium Fruit Purée",
+  {id:"flair", ku:"سیرۆپی Flair", ar:"شراب Flair", en:"Flair Syrups · Greece · 1 L",
+   nku:"سیرۆپی یۆنانیی Flair لە بوتڵی ١ لیتریدا — بۆ قاوە، کۆکتێڵ و مۆکتێڵ.", nar:"شراب Flair اليوناني بعبوة 1 لتر — للقهوة والكوكتيلات والموكتيلات."},
+  {id:"purees", ku:"پیورێی میوە", ar:"هريس الفواكه", en:"Essenza · Fruit ’n’ Mix Purée · 1.3 kg",
    nku:"پیورێی میوەی چڕ بۆ سمووزی، فرێش و خواردنەوەی سارد. بوتڵی دەستگرتنی ئاسان.", nar:"هريس فواكه مركّز للسموذي والمشروبات المنعشة والباردة، بعبوة سهلة الإمساك."},
-  {id:"sauces", ku:"سۆس", ar:"الصوصات", en:"Sauces",
+  {id:"sauces", ku:"سۆس", ar:"الصوصات", en:"Essenza · Sauces",
    nku:"سۆسی چڕ بۆ مۆکا، فرێپێ، دیزاینی کوپ و شیرینی.", nar:"صوص مركّز للموكا والفرابيه وتزيين الأكواب والحلويات."},
-  {id:"cremoso", ku:"پاودەری کرێمۆسۆ", ar:"مسحوق كريموسو", en:"Cremoso · Powdered Mix",
+  {id:"cremoso", ku:"پاودەری کرێمۆسۆ", ar:"مسحوق كريموسو", en:"Essenza · Cremoso Powdered Mix",
    nku:"بنەمای پاودەر بۆ خواردنەوەی سارد و گەرم — فرێپێ، شەیک و سمووزی.", nar:"قاعدة مسحوق للمشروبات الباردة والساخنة — فرابيه وميلك شيك وسموذي."},
-  {id:"choco", ku:"چوکلێتی خواردنەوە", ar:"الشوكولاتة الساخنة", en:"Choco ’n’ Mix · Drinking Chocolate",
+  {id:"choco", ku:"چوکلێتی خواردنەوە", ar:"الشوكولاتة الساخنة", en:"Essenza · Choco ’n’ Mix",
    nku:"پاودەری چوکلێتی گەرم بۆ کافێ و ماڵ.", nar:"مسحوق شوكولاتة ساخنة للمقاهي والمنازل."}
 ];
-const S="syrups",P="purees",SA="sauces",C="cremoso",CH="choco";
+const F="flair",S="syrups",P="purees",SA="sauces",C="cremoso",CH="choco";
 // [img, cat, english, kurdish, arabic, price, size, taste ku, taste ar]
 const RAW = [
  [0,S,"Biscuit","بسکیت","بسكويت",19000],[1,S,"Blackberry","بلاکبێری","بلاك بيري",19000],[2,S,"Blue Blueberry","بلوبێری شین","بلوبيري أزرق",19000],[3,S,"Blue Curaçao","بلو کوراساو","بلو كوراساو",19000],[4,S,"Blueberry","بلوبێری","بلوبيري",19000],[5,S,"Bubblegum","بەبڵگەم","علكة",19000],[6,S,"Caramel","کەرامێل","كراميل",19000],[7,S,"Cardamom","هێل","هيل",19000],[8,S,"Chocolate","چوکلێت","شوكولاتة",19000],
  [9,S,"Cinnamon","دارچین","قرفة",19000],[10,S,"Coconut","گوێزی هیندی","جوز الهند",19000],[11,S,"Cucumber","خەیار","خيار",19000],[12,S,"Dragon Fruit","دراگۆن فروت","فاكهة التنين",19000],[13,S,"Espresso","ئێسپرێسۆ","إسبريسو",19000],[14,S,"Falernum","فالێرنەم","فاليرنوم",19000],[15,S,"Garden Mint","پونگ","نعناع",19000],[16,S,"Grapefruit","گرێپفروت","جريب فروت",19000],[17,S,"Green Apple","سێوی سەوز","تفاح أخضر",19000],[18,S,"Grenadine","گرێنادین","غرينادين",19000],[19,S,"Hazelnut","بندق","بندق",19000],[20,S,"Hibiscus","هیبسکەس","كركديه",19000],
  [21,S,"Kiwi","کیوی","كيوي",19000],[22,S,"Lavender","لاڤەندەر","لافندر",19000],[23,S,"Lemon","لیمۆ","ليمون",19000],[24,S,"Lime","لایم","لايم",19000],[25,S,"Mango","مانگۆ","مانجو",19000],[26,S,"Mastic","مەستەکی","مستكة",19000],[27,S,"Mixed Berries","بێری تێکەڵ","توت مشكّل",19000],[28,S,"Mojito","مۆهیتۆ","موهيتو",19000],[29,S,"Passion Fruit","پاشن فروت","باشن فروت",19000],[30,S,"Peach","قۆخ","خوخ",19000],[31,S,"Peppermint","پێپەرمینت","نعناع فلفلي",19000],[32,S,"Pineapple","ئەناناس","أناناس",19000],
  [33,S,"Pomegranate","هەنار","رمان",19000],[34,S,"Raspberry","ڕاسبێری","راسبيري",19000],[35,S,"Rose","گوڵ","ورد",19000],[36,S,"Salted Caramel","کەرامێلی سوێر","كراميل مملّح",19000],[37,S,"Spices","بەهارات","بهارات",19000],[38,S,"Strawberry","شلیک","فراولة",19000],[39,S,"Toffee","تۆفی","توفي",19000],[40,S,"Vanilla","ڤانێلا","فانيلا",19000],[41,S,"Watermelon","شووتی","بطيخ",19000],[42,S,"Almond","بادەم","لوز",19000],[43,S,"Apple","سێو","تفاح",19000],[44,S,"Banana","مۆز","موز",19000],
- [45,P,"Cherry","گێلاس","كرز",22000],[46,P,"Coconut","گوێزی هیندی","جوز الهند",22000],[47,P,"Dragon Fruit","دراگۆن فروت","فاكهة التنين",22000],[48,P,"Forest Fruits","میوەی دارستان","فواكه الغابة",22000],[49,P,"Green Apple","سێوی سەوز","تفاح أخضر",22000],[50,P,"Kiwi","کیوی","كيوي",22000],[51,P,"Lemon","لیمۆ","ليمون",22000],[52,P,"Lime","لایم","لايم",22000],[53,P,"Mandarin","لاڵەنگی","يوسفي",22000],
- [54,P,"Mango","مانگۆ","مانجو",22000],[55,P,"Melon","کاڵەک","شمام",22000],[56,P,"Passion Fruit","پاشن فروت","باشن فروت",22000],[57,P,"Peach","قۆخ","خوخ",22000],[58,P,"Pineapple","ئەناناس","أناناس",22000],[59,P,"Pomegranate","هەنار","رمان",22000],[60,P,"Raspberry","ڕاسبێری","راسبيري",22000],[61,P,"Strawberry","شلیک","فراولة",22000],[62,P,"Watermelon","شووتی","بطيخ",22000],[63,P,"Banana","مۆز","موز",22000],[64,P,"Blackberry","بلاکبێری","بلاك بيري",22000],[65,P,"Blueberry","بلوبێری","بلوبيري",22000],
+ ["f1",F,"Flair Vanilla","ڤانێلا","فانيلا",16500,"L1"],["f2",F,"Flair Mojito","مۆهیتۆ","موهيتو",16500,"L1"],["f3",F,"Flair Caramel","کەرامێل","كراميل",16500,"L1"],
+ [45,P,"Cherry","گێلاس","كرز",22000,"P13"],[46,P,"Coconut","گوێزی هیندی","جوز الهند",22000,"P13"],[47,P,"Dragon Fruit","دراگۆن فروت","فاكهة التنين",22000,"P13"],[48,P,"Forest Fruits","میوەی دارستان","فواكه الغابة",22000,"P13"],[49,P,"Green Apple","سێوی سەوز","تفاح أخضر",22000,"P13"],[50,P,"Kiwi","کیوی","كيوي",22000,"P13"],[51,P,"Lemon","لیمۆ","ليمون",22000,"P13"],[52,P,"Lime","لایم","لايم",22000,"P13"],[53,P,"Mandarin","لاڵەنگی","يوسفي",22000,"P13"],
+ [54,P,"Mango","مانگۆ","مانجو",22000,"P13"],[55,P,"Melon","کاڵەک","شمام",22000,"P13"],[56,P,"Passion Fruit","پاشن فروت","باشن فروت",22000,"P13"],[57,P,"Peach","قۆخ","خوخ",22000,"P13"],[58,P,"Pineapple","ئەناناس","أناناس",22000,"P13"],[59,P,"Pomegranate","هەنار","رمان",22000,"P13"],[60,P,"Raspberry","ڕاسبێری","راسبيري",22000,"P13"],[61,P,"Strawberry","شلیک","فراولة",22000,"P13"],[62,P,"Watermelon","شووتی","بطيخ",22000,"P13"],[63,P,"Banana","مۆز","موز",22000,"P13"],[64,P,"Blackberry","بلاکبێری","بلاك بيري",22000,"P13"],[65,P,"Blueberry","بلوبێری","بلوبيري",22000,"P13"],
  [66,C,"Cremoso Smoothie Base","بنەمای سمووزی","قاعدة سموذي",50000],[67,C,"Cremoso Vanilla Base","بنەمای ڤانێلا","قاعدة فانيلا",50000],[68,C,"Cremoso Chocolate Base","بنەمای چوکلێت","قاعدة شوكولاتة",50000],[69,C,"Cremoso Non-Dairy Base","بنەمای بێ شیر","قاعدة خالية من الألبان",50000],
  [70,SA,"Caramel Sauce","سۆسی کەرامێل","صوص كراميل",33000],[71,SA,"Chocolate Sauce","سۆسی چوکلێت","صوص شوكولاتة",33000],[72,SA,"White Chocolate Sauce","سۆسی چوکلێتی سپی","صوص شوكولاتة بيضاء",33000],
  [73,CH,"Chocolate Milk Essenza","ئێسێنزا","إيسنزا",24000,"L","چڕ و کرێمی","غني وكريمي"],[74,CH,"Chocolate Milk Supreme","سوپرێم","سوبريم",24000,"L","تامی بەهێز","مذاق مكثّف"],[75,CH,"Chocolate Premium Milk","پرێمیەم","بريميوم",24000,"L","تامی تەواو","مذاق كامل"],[76,CH,"Chocolate Milk Classica","کلاسیکا","كلاسيكا",24000,"L","نەرم و لووس","ناعم وحريري"],[77,CH,"Chocolate Milk Classica","کلاسیکا — کیسە","كلاسيكا — كيس",23000,"B","نەرم و لووس","ناعم وحريري"],
@@ -508,7 +511,7 @@ const SOON = [
 const cat = id => CATS.find(c=>c.id===id);
 const fmt = n => n.toLocaleString("en-US");
 const $ = s => document.querySelector(s);
-const PRODUCTS = RAW.map(([img,c,en,ku,ar,price,size,dku,dar])=>({id:"p"+img,img:`img/${String(img).padStart(2,"0")}.webp`,cat:c,en,ku,ar,price,size,dku,dar,order:img}));
+const PRODUCTS = RAW.map(([img,c,en,ku,ar,price,size,dku,dar],i)=>({id:"p"+img,img:`img/${String(img).padStart(2,"0")}.webp`,cat:c,en,ku,ar,price,size,dku,dar,order:i}));
 const byId = Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
 
 const norm = s => (s||"").toLowerCase()
@@ -639,7 +642,7 @@ function readHash(){ const h=location.hash.slice(1); if(CATS.some(c=>c.id===h)) 
 $("#chips").addEventListener("click",e=>{
   const b=e.target.closest("[data-cat]"); if(!b) return;
   state.cat=b.dataset.cat; render(); setHash();
-  const bar=$(".bar"); if(bar.getBoundingClientRect().top>1) bar.scrollIntoView({behavior:"smooth"});
+  const y=$(".landing").getBoundingClientRect().bottom+window.scrollY; if(Math.abs(window.scrollY-y)>2) window.scrollTo({top:y,behavior:window.scrollY>y?"auto":"smooth"});
 });
 window.addEventListener("hashchange",()=>{ readHash(); render() });
 
@@ -722,7 +725,7 @@ $("#out").addEventListener("click",e=>{
 
 let tt; function toast(m){ const el=$("#toast"); el.textContent=m; el.classList.add("on"); clearTimeout(tt); tt=setTimeout(()=>el.classList.remove("on"),1800) }
 
-$("#fTotal").textContent=PRODUCTS.length;
+$("#fTotal").textContent=PRODUCTS.length; $("#fCats").textContent=CATS.length;
 readHash(); applyLang();
 </script>
 </body>
